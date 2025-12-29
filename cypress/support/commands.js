@@ -1,17 +1,19 @@
+require('cypress-xpath');
 Cypress.Commands.add('login', (email, password) => {
-  cy.visit('https://automationexercise.com/signup')
-
-  cy.get('//input[@data-qa="login-email"]').type(email)
-  cy.get('//input[@placeholder="Password"]').type(password)
-  cy.get('//button[normalize-space()="Login"]').click()
+  cy.visit('/')
+  cy.get('a[href="/login"]').click()
+  cy.xpath('//input[@data-qa="login-email"]').type(email)
+  cy.xpath('//input[@data-qa="login-password"]').type(password)
+  cy.xpath('//button[normalize-space()="Login"]').click()
 
 })
 
 Cypress.Commands.add('register', (name, email) => {
-  cy.visit('https://automationexercise.com/signup')
+  cy.visit('/')
+  cy.get('a[href="/login"]').click()
 
-  cy.get('//input[@data-qa="login-email"]').type(name)
-  cy.get('//input[@placeholder="Password"]').type(email)
-  cy.get('//button[normalize-space()="Login"]').click()
+  cy.xpath('//input[@placeholder="Name"]').type(name)
+  cy.xpath('//input[@data-qa="signup-email"]').type(email)
+  cy.xpath('//button[normalize-space()="Signup"]').click()
 
 })
