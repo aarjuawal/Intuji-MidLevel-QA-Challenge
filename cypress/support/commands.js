@@ -5,5 +5,13 @@ Cypress.Commands.add('login', (email, password) => {
   cy.get('//input[@placeholder="Password"]').type(password)
   cy.get('//button[normalize-space()="Login"]').click()
 
-  cy.url().should('include', '/dashboard')
+})
+
+Cypress.Commands.add('register', (name, email) => {
+  cy.visit('https://automationexercise.com/signup')
+
+  cy.get('//input[@data-qa="login-email"]').type(name)
+  cy.get('//input[@placeholder="Password"]').type(email)
+  cy.get('//button[normalize-space()="Login"]').click()
+
 })
